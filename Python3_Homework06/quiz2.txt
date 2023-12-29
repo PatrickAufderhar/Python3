@@ -1,0 +1,36 @@
+Python 3: The Python Environment
+Lesson 6, Quiz 2
+
+Question 1:
+How would you write a compiled regular expression to find the name "John Smith" in case-insensitive format?
+
+Your Answer:
+re.compile(r"John Smith", re.IGNORECASE)
+
+Question 2:
+How would you rewrite the compiled regular expression above to include verbose comments?
+
+Your Answer:
+re.compile(r"John Smith", re.IGNORECASE | re.VERBOSE)
+Mentor Comments:
+This isn't working to find "John Smith", yet it's finding "JohnSmith".  How might this be fixed?
+
+>>> m = re.search(regex, "One of the great railroad tycoons, JohnSmith, move to Montana in the 1800s.")
+>>> m
+<_sre.SRE_Match object at 0x13006b0>
+>>> m.group()
+'JohnSmith'
+
+Overall Comments:
+Q2 needs more testing.  Ignoring whitespace has consequences for having them in the pattern.
+----
+
+Your Answer:
+re.compile(r"John\sSmith", re.IGNORECASE | re.VERBOSE)
+Mentor Comments:
+re.compile(r"""John
+                     \s
+                     Smith""", 
+re.IGNORECASE | re.VERBOSE)
+Overall Comments:
+All perfect now.
